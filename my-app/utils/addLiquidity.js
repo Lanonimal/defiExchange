@@ -9,7 +9,7 @@ import {
 //function that calls addliquidity from contract
 export const addLiquidity = async(signer, addCDAmountWei, addEtherAmountWei) => {
     try {
-        const tokenContract = new Contract(TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI); //contract instance
+        const tokenContract = new Contract(TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, signer); //contract instance
         const exchangeContract = new Contract(EXCHANGE_CONTRACT_ADDRESS, EXCHANGE_CONTRACT_ABI, signer);
         //Our custom token is an ERC20 token so we need the user to allow us to take the required amount out of their wallet
         let tx = await tokenContract.approve(EXCHANGE_CONTRACT_ADDRESS, addCDAmountWei.toString());

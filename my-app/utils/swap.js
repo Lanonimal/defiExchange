@@ -19,9 +19,9 @@ export const getAmountOfTokensReceivedFromSwap = async(provider, _swapAmountWei,
 }
 
 //function that swaps swapAmountWei amount with tokenToBeReceivedAfterSwap amount
-export const swapTokens = async(provider, swapAmountWei, tokenToBeReceivedAfterSwap, ethSelected) => {
-    const tokenContract = new Contract(TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, provider);
-    const exchangeContract = new Contract(EXCHANGE_CONTRACT_ADDRESS, EXCHANGE_CONTRACT_ABI, provider);
+export const swapTokens = async(signer, swapAmountWei, tokenToBeReceivedAfterSwap, ethSelected) => {
+    const tokenContract = new Contract(TOKEN_CONTRACT_ADDRESS, TOKEN_CONTRACT_ABI, signer);
+    const exchangeContract = new Contract(EXCHANGE_CONTRACT_ADDRESS, EXCHANGE_CONTRACT_ABI, signer);
     let tx;
     if (ethSelected){ //eth selected so call ethToCryptoDevToken function from exchange contract. 
         //swapAmount must be passed as a {value:} because it is eth that's being paid to the contract instead of a value being passed to a function

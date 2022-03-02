@@ -55,8 +55,8 @@ export const getReserveOfCDTokens = async (provider) => {
         console.log(reserve);
         return reserve;
     } catch(err){
-        console.error(err);
         console.log("helllooooo");
+        console.error(err);
         return 0;
     }
 };
